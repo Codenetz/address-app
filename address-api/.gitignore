@@ -1,0 +1,7 @@
+.vscode/
+.idea/
+composer.lock
+yarn.lock
+.env
+.DS_Store
+vendor/

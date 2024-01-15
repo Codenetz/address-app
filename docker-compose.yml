@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  api:
+    ports:
+      - "8031:9000"
+    build:
+      context: "./address-api"
+    restart: always
+    env_file: "./address-api/.env"
+    volumes:
+      - "./address-api/:/var/www"
+      - "./address-api/vendor:/var/www/vendor"
+    hostname: api
+    networks:
+      - address_network
+
+  api-nginx:
+    ports:
+      - "8032:80"
+    build:
+      context: "./address-api/docker/nginx/"
+    restart: always
+    env_file: "./address-api/.env"
+    depends_on:
+      - api
+    hostname: api-nginx
+    networks:
+      - address_network
+
+  ui:
+    ports:
+      - "8033:8033"
+    build:
+      context: "./address-web-ui"
+    restart: always
+    env_file: "./address-web-ui/.env"
+    volumes:
+      - "./address-web-ui/:/var/www"
+      - "./address-web-ui/node_modules:/var/www/node_modules"
+    hostname: ui
+    command:  ["npm", "run", "development"]
+#    command:  ["npm", "run", "production"]
+    networks:
+      - address_network
+
+  ui-nginx:
+    ports:
+      - "8034:80"
+    build:
+      context: "./address-web-ui/docker/nginx/"
+    restart: always
+    env_file: "./address-web-ui/.env"
+    volumes:
+      - "./address-web-ui/public/:/var/www/public"
+    depends_on:
+      - ui
+      - api-nginx
+    hostname: api-nginx
+    networks:
+      - address_network
+
+networks:
+  address_network:
+    driver: bridge
