@@ -1,3 +1,9 @@
+# Introduction
+
+Address to cords application.
+
+Everything is build from scratch, including a small framework for the backend.
+
 # Set the environment
 
 API
