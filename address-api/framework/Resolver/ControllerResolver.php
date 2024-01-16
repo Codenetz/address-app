@@ -3,7 +3,6 @@
 namespace Framework\Resolver;
 
 use Framework\Kernel\HttpKernel;
-use Framework\Request;
 use Framework\Route;
 
 /**

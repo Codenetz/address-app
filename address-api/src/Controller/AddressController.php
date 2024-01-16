@@ -6,7 +6,6 @@ use Framework\Controller;
 use Framework\DependencyInjectionContainer\Container;
 use Framework\Kernel\HttpKernel;
 use Service\Geocoding\Interface\GeocodingResponseInterface;
-use Service\Geocoding\Providers\Google\GoogleMapsGeocodingResponse;
 
 class AddressController extends Controller
 {

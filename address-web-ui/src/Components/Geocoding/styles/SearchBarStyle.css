@@ -1,0 +1,33 @@
+.geocoding-app-container .search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.geocoding-app-container .search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+.geocoding-app-container .search-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.geocoding-app-container .search-button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.geocoding-app-container .search-button:not(:disabled):hover {
+    background-color: #0056b3;
+}

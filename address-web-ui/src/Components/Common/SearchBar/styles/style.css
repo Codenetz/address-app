@@ -1,0 +1,6 @@
+/*
+* The component styles must be managed by the parent component.
+* This way this component can be reused in different scenarios with different styles.
+*
+* For example see the Geocoding component.
+*/

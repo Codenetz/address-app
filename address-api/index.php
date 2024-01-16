@@ -20,4 +20,6 @@ $controllerResolver = new ControllerResolver([
     new Route('GET', '/test', Address\Controller\AddressController::class, 'getCords'),
 ], $httpKernel);
 
+ob_start();
 $controllerResolver->resolveController();
+ob_end_flush();
