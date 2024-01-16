@@ -14,7 +14,12 @@ class GoogleMapsGeocoding implements GeocodingStrategyInterface
 
     public function getCoordinates($address): ?GoogleMapsGeocodingResponse
     {
-        $response = file_get_contents(sprintf(self::GOOGLE_GEOCODE_API, trim($address), trim($this->apiKey)));
+        $address = trim($address ?? '');
+
+        if(mb_strlen($address, 'UTF-8') === 0)
+            return null;
+
+        $response = file_get_contents(sprintf(self::GOOGLE_GEOCODE_API, urlencode($address), urlencode(trim($this->apiKey))));
         $data = json_decode($response);
 
         if (!$data)

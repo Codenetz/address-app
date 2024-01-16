@@ -7,11 +7,14 @@ use Service\Geocoding\Interface\GeocodingStrategyInterface;
 
 class OSMGeocoding implements GeocodingStrategyInterface
 {
+    const OSM_GEOCODE_API = "https://nominatim.openstreetmap.org/search?format=json&q=%s";
 
     public function getCoordinates($address): ?GeocodingResponseInterface
     {
+        $address = trim($address ?? '');
 
-        $request_url = "https://nominatim.openstreetmap.org/search?format=json&q=" . urlencode($address);
+        if(mb_strlen($address, 'UTF-8') === 0)
+            return null;
 
         $options = [
             'http' => [
@@ -20,7 +23,7 @@ class OSMGeocoding implements GeocodingStrategyInterface
         ];
 
         $context = stream_context_create($options);
-        $response = file_get_contents($request_url, false, $context);
+        $response = file_get_contents(sprintf(self::OSM_GEOCODE_API, urlencode($address)), false, $context);
 
         $data = json_decode($response);
 

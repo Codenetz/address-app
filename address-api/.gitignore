@@ -5,3 +5,9 @@ yarn.lock
 .env
 .DS_Store
 vendor/
+.phpunit.result.cache
+phpunit.xml
+phpunit.xml.dist
+phpunit.dblite/
+tests/bootstrap.php
+coverage/
