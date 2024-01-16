@@ -30,8 +30,10 @@ $ docker exec -it address-app_api_1 vendor/bin/phpunit tests
 **[API]** http://localhost:8032
 
 # API envs
-`GOOGLE_API_KEY` Is for configuring the Google geocode service.
-`DEFAULT_GEOCODING_API` Is for configuring the `default.geocoding` service. Supports `google` or `osm`.
+
+`GOOGLE_API_KEY` Configures the Google geocode service.
+
+`DEFAULT_GEOCODING_API` Configuring the `default.geocoding` service. Supports `google` or `osm`.
 
 # How to add new geocode services
 1. Create new provider inside `service/Geocoding/Providers`.
