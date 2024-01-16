@@ -1,8 +1,10 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
+use Framework\DependencyInjectionContainer\Container;
 use Framework\Kernel\HttpKernel;
-use Framework\Route;
+use Definition\Routes;
+use Definition\Services;
 use Framework\Env;
 use Framework\Request;
 use Framework\Response;
@@ -13,12 +15,14 @@ $httpKernel = new HttpKernel(new Env(__DIR__ . '/.env'));
 $httpKernel->setRequest(new Request());
 $httpKernel->setResponse(new Response());
 
-new ServiceDefinition($httpKernel);
+$container = Container::getInstance();
 
-$controllerResolver = new ControllerResolver([
-    new Route('GET', '/get-cords', Address\Controller\AddressController::class, 'getCords'),
-    new Route('GET', '/test', Address\Controller\AddressController::class, 'getCords'),
-], $httpKernel);
+$services = (new Services($httpKernel))->getDefinitions();
+foreach ($services as $serviceName => $definition) {
+    $container->set($serviceName, $definition);
+}
+
+$controllerResolver = new ControllerResolver((new Routes($httpKernel))->getDefinitions(), $httpKernel);
 
 ob_start();
 $controllerResolver->resolveController();
