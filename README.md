@@ -1,6 +1,6 @@
 # Introduction
 
-Address to cords application.
+Get address coordinates. Get lat lng from an address using multiple third-party geocoding services.
 
 Everything is build from scratch, including a small framework for the backend.
 
