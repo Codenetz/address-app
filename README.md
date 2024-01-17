@@ -8,13 +8,13 @@ Everything is build from scratch, including a small framework for the backend.
 
 API
 ```sh
-$ cp ./address-api/dist.env .env
-$ cp ./address-api/dist.phpunit.xml phpunit.xml
+$ cp ./address-api/dist.env ./address-api/.env
+$ cp ./address-api/dist.phpunit.xml ./address-api/phpunit.xml
 ```
 
 UI
 ```sh
-$ cp ./address-web-ui/dist.env .env
+$ cp ./address-web-ui/dist.env ./address-web-ui/.env
 ```
 
 # Run the application

@@ -10,7 +10,7 @@ services:
     env_file: "./address-api/.env"
     volumes:
       - "./address-api/:/var/www"
-      - "./address-api/vendor:/var/www/vendor"
+      - "./address-api/vendor/:/var/www/vendor"
     hostname: api
     networks:
       - address_network
@@ -37,7 +37,7 @@ services:
     env_file: "./address-web-ui/.env"
     volumes:
       - "./address-web-ui/:/var/www"
-      - "./address-web-ui/node_modules:/var/www/node_modules"
+      - "./address-web-ui/node_modules/:/var/www/node_modules"
     hostname: ui
     command:  ["npm", "run", "development"]
 #    command:  ["npm", "run", "production"]
